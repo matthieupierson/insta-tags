@@ -2,27 +2,36 @@ import random
 import os
 import sys
 
+######################################################################################
 #nom des database
 #files = ['hashtags_base', 'abstract', 'graphics', 'minimalism', 'art', 'hdr']
+
+
+######################################################################################
 #quantitée de chaque hashtags de chaque database
+#nb_hashtags = [18,3,3,2,2,2,2]
 
 
-nb_hashtags = [18,3,3,2,2,2,2]
-textfile=0
-k=0
+######################################################################################
+#recuperer les noms des databases et les nombres des tags souhaités
 
-for element in os.listdir('db/'):
-    if element.endswith('.txt'):
-        textfile=textfile+1
+info = []
+nb_tags = []
+databases = []
 
-files=[0]*textfile
+f = open("config.txt")
+file = f.read().splitlines()
 
-for element in os.listdir('db/'):
-    if element.endswith('.txt'):
-        files[k]=element[:len(element)-4]
-        k=k+1
-    
-print(files)
+for i in range(len(file)) : 
+    info.append(file[i].split())
+    databases.append(info[i][0])
+    nb_tags.append(info[i][1]) 
+
+f.close()
+
+
+######################################################################################
+#randomiser
 
 def randomizer (my_file, nb_hashtags):
     #stockage du texte dans un tableau input_hashtags
@@ -53,7 +62,17 @@ def randomizer (my_file, nb_hashtags):
         fb.write(" ")
     fb.close()
 
-open('random_tags.txt',"w").close()
-for j in range(len(files)):
-    randomizer(files[j], nb_hashtags[j])
 
+
+
+#################################### M A I N #########################################
+open('random_tags.txt',"w").close()
+
+f0 = open('random_tags.txt',"a")
+f0.write(".\n.\n.\n.\n")
+f0.close()
+
+for j in range(len(databases)):
+    #print(databases[j])
+    #print(nb_tags[j])
+    randomizer(databases[j], int(nb_tags[j]))

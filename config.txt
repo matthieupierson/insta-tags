@@ -1,0 +1,6 @@
+abstract 0
+art 2
+graphics 5
+hashtags_base 3
+hdr 3
+minimalism 3
