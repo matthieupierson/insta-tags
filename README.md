@@ -13,4 +13,4 @@ Then you launch the "insta-tags.py" and in the "random_tags.txt" you'll find you
 .
 and your tags !
 
-Enjoy <3
+Enjoy !
